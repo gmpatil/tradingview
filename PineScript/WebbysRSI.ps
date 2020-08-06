@@ -1,0 +1,26 @@
+// gmpatil (Girish Patil)
+//@version=4
+study("Webby's RSI", shorttitle="RS-webby")
+// Mike Webster's RSI (Really Simple Indicator), aka Webby's RSI.
+// This script is PineScript port of John Muchow's ThinkScript port.
+// For more details see below URLs:
+// https://www.investors.com/market-trend/stock-market-update-raging-bull-rests/
+// https://www.investors.com/tag/weekend-stock-market-update/
+// https://playthetrade.com/thinkscript/webbys-rsi-in-thinkscript/
+
+ema21 = ema(close, 21)
+lowVsEma = ((low - ema21) / close) * 100 
+lowVsEmaNonNeg = (sign(lowVsEma) > -1) ? lowVsEma : 0
+lowVsEmaSma = sma(lowVsEmaNonNeg, 10)
+
+// Lines
+hline(0, color=color.green, linestyle=hline.style_solid)
+hline(.5, color=color.green, linestyle=hline.style_solid)
+hline(2, color=color.green, linestyle=hline.style_solid)
+hline(4, color=color.yellow, linestyle=hline.style_solid)
+hline(6, color=color.red, linestyle=hline.style_solid)
+
+// Histogram
+plot(lowVsEmaNonNeg, title='WebbyRSI', color=color.aqua, style=plot.style_histogram)
+// Sma
+plot(lowVsEmaSma, title='WebbyRSI-sma', color=color.purple, style=plot.style_line)
