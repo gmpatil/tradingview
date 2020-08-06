@@ -19,12 +19,12 @@ low_vs_ema_sma = sma(low_vs_ema_non_neg, sma_length)
 
 // Lines
 hline(0, color=color.green, linestyle=hline.style_solid, title='0-level')
-hline(.5, color=color.green, linestyle=hline.style_solid, title='normal-low')
-hline(2, color=color.green, linestyle=hline.style_solid, title='normal-high')
+hline(.5, color=color.green, linestyle=hline.style_solid, title='normal-low',  linewidth=2)
+hline(2, color=color.green, linestyle=hline.style_solid, title='normal-high',  linewidth=2)
 hline(4, color=color.yellow, linestyle=hline.style_solid, title='warning-level')
 hline(6, color=color.red, linestyle=hline.style_solid, title='danger-level')
 
 // Histogram
 plot(low_vs_ema_non_neg, title='WebbyRSI', color=color.aqua, style=plot.style_histogram)
 // Sma
-plot(low_vs_ema_sma, title='WebbyRSI-sma', color=color.purple, style=plot.style_line)
+plot(low_vs_ema_sma, title='WebbyRSI-sma', color=color.purple, style=plot.style_line, linewidth=2)
